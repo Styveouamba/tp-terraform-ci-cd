@@ -51,9 +51,12 @@ resource "aws_s3_object" "index_html" {
   source       = "site/index.html"
   content_type = "text/html"
 
+  source_hash = filemd5("site/index.html")
+
   depends_on = [
     aws_s3_bucket_policy.public_policy
   ]
 }
+
 
 
